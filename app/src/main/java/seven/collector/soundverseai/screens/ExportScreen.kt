@@ -30,15 +30,19 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import seven.collector.soundverseai.R
+import seven.collector.soundverseai.utilities.shareVideoToInstagram
 
 @Composable
 fun ExportScreen(onDoneClick: () -> Unit) {
+    val context = LocalContext.current
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -107,7 +111,6 @@ fun ExportScreen(onDoneClick: () -> Unit) {
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Instagram Stories button
             Box(
                 modifier = Modifier
                     .width(300.dp)
@@ -123,7 +126,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                     )
             ) {
                 Button(
-                    onClick = {},
+                    onClick = {shareVideoToInstagram(context, "sample.mp4")},
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), // Transparent background
                     contentPadding = PaddingValues(0.dp),
                     modifier = Modifier
@@ -133,7 +136,6 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // Instagram Gradient Icon Background
                         Box(
                             modifier = Modifier
                                 .size(24.dp)
@@ -151,7 +153,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                                 ), contentAlignment = Alignment.Center
                         ) {
                             Image(
-                                painter = painterResource(id = R.drawable.instagram), // Replace with Instagram icon
+                                painter = painterResource(id = R.drawable.instagram),
                                 contentDescription = "Instagram",
                                 modifier = Modifier.size(20.dp)
                             )
@@ -177,15 +179,15 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(
-                                Color(0xFF9164FF), // Solid purple
-                                Color(0x009164FF)  // Transparent purple
+                                Color(0xFF9164FF),
+                                Color(0x009164FF)
                             ), start = Offset(0f, 500f), end = Offset(0f, 1000f)
                         )
                     )
             ) {
                 Button(
                     onClick = {},
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), // Transparent background
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                     contentPadding = PaddingValues(0.dp),
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier
@@ -195,7 +197,6 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // Instagram Gradient Icon Background
                         Box(
                             modifier = Modifier
                                 .size(24.dp)
@@ -203,7 +204,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                             contentAlignment = Alignment.Center
                         ) {
                             Image(
-                                painter = painterResource(id = R.drawable.tiktok), // Replace with Instagram icon
+                                painter = painterResource(id = R.drawable.tiktok),
                                 contentDescription = "Tiktok",
                                 modifier = Modifier.size(20.dp)
                             )
@@ -230,7 +231,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
             ) {
                 SocialIcon(
                     name = "Instagram",
-                    iconId = R.drawable.instagram, // Replace with actual icon
+                    iconId = R.drawable.instagram,
                     backgroundColor = Brush.linearGradient(
                         colors = listOf(
                             Color(0xFFFAE100),
@@ -244,7 +245,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
 
                 SocialIcon(
                     name = "Whatsapp",
-                    iconId = R.drawable.whatsapp, // Replace with actual icon
+                    iconId = R.drawable.whatsapp,
                     backgroundColor = Brush.linearGradient(
                         colors = listOf(
                             Color(0xFF25D366), Color(0xFF25D366)
@@ -254,7 +255,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
 
                 SocialIcon(
                     name = "Facebook",
-                    iconId = R.drawable.facebook, // Replace with actual icon
+                    iconId = R.drawable.facebook,
                     backgroundColor = Brush.linearGradient(
                         colors = listOf(
                             Color(0xFF1877F2), Color(0xFF1877F2)
@@ -264,7 +265,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
 
                 SocialIcon(
                     name = "Youtube Shorts",
-                    iconId = R.drawable.youtube_shorts, // Replace with actual icon
+                    iconId = R.drawable.youtube_shorts,
                     backgroundColor = Brush.linearGradient(
                         colors = listOf(
                             Color(0xFFFF0000), Color(0xFFFF0000)
@@ -274,7 +275,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
 
                 SocialIcon(
                     name = "Other",
-                    iconId = R.drawable.other_expoort, // Replace with actual icon
+                    iconId = R.drawable.other_expoort,
                     backgroundColor = Brush.linearGradient(
                         colors = listOf(
                             Color(0xFF666666), Color(0xFF666666)
@@ -282,7 +283,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                     )
                 )
             }
-            // Done button
+
             Button(
                 onClick = { /* TODO */ },
                 modifier = Modifier

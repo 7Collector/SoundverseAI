@@ -57,6 +57,7 @@ import seven.collector.soundverseai.R
 @Composable
 fun HomeScreen(
     onNotificationClick: () -> Unit,
+    onStartClick: () -> Unit,
 ) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -188,7 +189,7 @@ fun HomeScreen(
                                 ),
                                 shape = RoundedCornerShape(24.dp)
                             )
-                            .clickable { /* TODO: Handle click */ }
+                            .clickable { onStartClick() }
                     ) {
                         Text("Start Chat", color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(12.dp))
                     }
@@ -228,5 +229,5 @@ fun HomeScreen(
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(onNotificationClick = {})
+    HomeScreen(onNotificationClick = {}, onStartClick = {})
 }
