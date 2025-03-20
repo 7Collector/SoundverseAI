@@ -12,8 +12,10 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -40,7 +42,7 @@ import seven.collector.soundverseai.R
 import seven.collector.soundverseai.utilities.shareVideoToInstagram
 
 @Composable
-fun ExportScreen(onDoneClick: () -> Unit) {
+fun ExportScreen(onDoneClick: () -> Unit, onBackClick: () -> Unit) {
     val context = LocalContext.current
 
     Box(
@@ -57,10 +59,12 @@ fun ExportScreen(onDoneClick: () -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .statusBarsPadding()
+                .navigationBarsPadding()
                 .padding(16.dp)
         ) {
             IconButton(
-                onClick = { /* TODO */ },
+                onClick = { onBackClick() },
                 modifier = Modifier
                     .size(36.dp)
                     .background(Color.Black, CircleShape)
@@ -73,7 +77,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.weight(1.0f))
 
             Text(
                 text = "Ready to share",
@@ -96,7 +100,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
 
             Box(
                 modifier = Modifier
-                    .weight(1f)
+                    .width(200.dp)
                     .background(Color.White, shape = RoundedCornerShape(16.dp))
                     .align(Alignment.CenterHorizontally)
                     .aspectRatio(9f / 16f) // Vertical video aspect ratio
@@ -109,7 +113,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.weight(1.0f))
 
             Box(
                 modifier = Modifier
@@ -119,8 +123,8 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(
-                                Color(0xFF9164FF), // Solid purple
-                                Color(0x009164FF)  // Transparent purple
+                                Color(0xFF9164FF),
+                                Color(0x009164FF)
                             ), start = Offset(0f, 500f), end = Offset(0f, 1000f)
                         )
                     )
@@ -221,7 +225,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                     }
                 }
             }
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(24.dp))
             // Bottom social icons
             Row(
                 modifier = Modifier
@@ -268,7 +272,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
                     iconId = R.drawable.youtube_shorts,
                     backgroundColor = Brush.linearGradient(
                         colors = listOf(
-                            Color(0xFFFF0000), Color(0xFFFF0000)
+                            Color.White, Color.White
                         )
                     )
                 )
@@ -285,7 +289,7 @@ fun ExportScreen(onDoneClick: () -> Unit) {
             }
 
             Button(
-                onClick = { /* TODO */ },
+                onClick = { onDoneClick() },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(horizontal = 24.dp)
@@ -333,5 +337,5 @@ fun SocialIcon(name: String, iconId: Int, backgroundColor: Brush) {
 @Preview
 @Composable
 fun ExportScreenPreview() {
-    ExportScreen(onDoneClick = {})
+    ExportScreen(onDoneClick = {}, onBackClick = {})
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import seven.collector.soundverseai.utilities.AppNavHost
 import seven.collector.soundverseai.utilities.Constants.Companion.NOTIFICATION_TYPE
 import seven.collector.soundverseai.utilities.Constants.Companion.NOTIFICATION_TYPE_EXPORT
+import seven.collector.soundverseai.utilities.Screen
 
 class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()
@@ -30,7 +32,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setupNotifications()
-
+        enableEdgeToEdge()
         setContent {
             Surface(
                 modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
@@ -39,7 +41,6 @@ class MainActivity : ComponentActivity() {
                 HandleNotificationNavigation(navController, intent)
                 AppNavHost(navController = navController)
             }
-
         }
     }
 
@@ -82,7 +83,7 @@ fun HandleNotificationNavigation(navController: NavHostController, intent: Inten
 
         when (notificationType) {
             NOTIFICATION_TYPE_EXPORT -> {
-                navController.navigate("export_state")
+                navController.navigate(Screen.ExportState.route)
             }
         }
     }

@@ -12,8 +12,10 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -73,11 +75,9 @@ fun ChatScreen(onClick: () -> Unit) {
         )
     }
 
-    Scaffold { padding->
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(Color(0xFF9164FF), Color.Black),
@@ -88,6 +88,8 @@ fun ChatScreen(onClick: () -> Unit) {
         ) {
             Column(
                 modifier = Modifier.fillMaxSize()
+                    .statusBarsPadding()
+                    .navigationBarsPadding()
             ) {
                 Row(
                     modifier = Modifier
@@ -238,7 +240,7 @@ fun ChatScreen(onClick: () -> Unit) {
                 }
             }
         }
-    }
+
 }
 
 @Composable
@@ -305,7 +307,7 @@ fun ChatMessageBubble(message: Message, onClick: () -> Unit) {
                                     ),
                                     shape = RoundedCornerShape(24.dp)
                                 )
-                                .clickable { onClick() }
+                                .clickable {  }
                                 .padding(horizontal = 16.dp, vertical = 8.dp)
                         ) {
                             Text(

@@ -1,6 +1,8 @@
 package seven.collector.soundverseai.utilities
 
+import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -20,6 +22,9 @@ sealed class Screen(val route: String) {
 fun AppNavHost(
     navController: NavHostController
 ) {
+
+    val context = LocalContext.current
+
     NavHost(
         navController = navController,
         startDestination = Screen.Home.route
@@ -52,8 +57,11 @@ fun AppNavHost(
                     navController.popBackStack()
                 },
                 onNotificationClick = { notificationType ->
-
+                    if (notificationType == "export") {
                     navController.navigate(Screen.ExportState.route)
+                    } else {
+                        Toast.makeText(context, "Clicked on $notificationType", Toast.LENGTH_SHORT).show()
+                    }
                 }
             )
         }
@@ -68,10 +76,9 @@ fun AppNavHost(
                         }
                     }
                 },
-                /*
-                onShareToInstagramClick = { videoUri ->
-
-                }*/
+                onBackClick = {
+                    navController.popBackStack()
+                }
             )
         }
     }

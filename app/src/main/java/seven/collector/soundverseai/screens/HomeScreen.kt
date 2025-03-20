@@ -12,8 +12,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -109,6 +111,8 @@ fun HomeScreen(
                         end = Offset(0f, LocalConfiguration.current.screenHeightDp * 0.4f)
                     )
                 )
+                .statusBarsPadding()
+                .navigationBarsPadding()
                 .pointerInput(Unit) {
                     detectHorizontalDragGestures { _, dragAmount ->
                         if (dragAmount > 50) {
@@ -128,7 +132,7 @@ fun HomeScreen(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     IconButton(
-                        onClick = { /* TODO */ },
+                        onClick = { scope.launch { drawerState.open() } },
                         modifier = Modifier
                             .size(32.dp)
                             .background(Color(0xFF030303), CircleShape)
