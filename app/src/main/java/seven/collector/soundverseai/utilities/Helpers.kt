@@ -7,6 +7,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Environment
 import android.util.Log
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.core.app.NotificationCompat
 import androidx.core.content.FileProvider
 import androidx.work.OneTimeWorkRequestBuilder
@@ -18,6 +21,10 @@ import seven.collector.soundverseai.utilities.Constants.Companion.NOTIFICATION_T
 import java.io.File
 import java.io.FileOutputStream
 import java.util.concurrent.TimeUnit
+
+val VariableFont = FontFamily(
+    Font(R.font.urbanist_v, weight = FontWeight.Normal) // Variable font
+)
 
 fun shareVideoToInstagram(context: Context, assetFileName: String) {
     val instagramPackage = "com.instagram.android"

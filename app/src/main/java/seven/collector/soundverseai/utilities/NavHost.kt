@@ -60,7 +60,7 @@ fun AppNavHost(
                     if (notificationType == "export") {
                     navController.navigate(Screen.ExportState.route)
                     } else {
-                        Toast.makeText(context, "Clicked on $notificationType", Toast.LENGTH_SHORT).show()
+                        Toast.makeText( context, "Clicked on $notificationType", Toast.LENGTH_SHORT).show()
                     }
                 }
             )

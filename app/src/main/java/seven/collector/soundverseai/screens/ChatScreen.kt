@@ -53,6 +53,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import seven.collector.soundverseai.R
 import seven.collector.soundverseai.data.Message
+import seven.collector.soundverseai.utilities.VariableFont
 
 @Composable
 fun ChatScreen(onClick: () -> Unit) {
@@ -122,7 +123,7 @@ fun ChatScreen(onClick: () -> Unit) {
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.alpha(0.5f)
                     ) {
-                        Text(
+                        Text( fontFamily = VariableFont,
                             text = "PULSE PLAYGROUND",
                             color = Color.White,
                             fontSize = 13.sp
@@ -185,7 +186,7 @@ fun ChatScreen(onClick: () -> Unit) {
                                 decorationBox = { innerTextField ->
                                     Box(modifier = Modifier.alpha(0.5f)) {
                                         if (messageText.isEmpty()) {
-                                            Text(
+                                            Text( fontFamily = VariableFont,
                                                 fontSize = 14.sp,
                                                 text = "What would you like to create?",
                                                 color = Color.White,
@@ -287,7 +288,7 @@ fun ChatMessageBubble(message: Message, onClick: () -> Unit) {
                     .wrapContentWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
+                    Text( fontFamily = VariableFont,
                         text = message.text,
                         color = Color.White,
                         fontSize = 14.sp
@@ -314,7 +315,7 @@ fun ChatMessageBubble(message: Message, onClick: () -> Unit) {
                                 .clickable {  }
                                 .padding(horizontal = 16.dp, vertical = 8.dp)
                         ) {
-                            Text(
+                            Text( fontFamily = VariableFont,
                                 text = "Try Now",
                                 color = Color.White,
                                 fontSize = 13.sp

@@ -39,6 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import seven.collector.soundverseai.R
+import seven.collector.soundverseai.utilities.VariableFont
 import seven.collector.soundverseai.utilities.shareVideoToInstagram
 
 @Composable
@@ -79,7 +80,7 @@ fun ExportScreen(onDoneClick: () -> Unit, onBackClick: () -> Unit) {
 
             Spacer(modifier = Modifier.weight(1.0f))
 
-            Text(
+            Text( fontFamily = VariableFont,
                 text = "Ready to share",
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
@@ -89,7 +90,7 @@ fun ExportScreen(onDoneClick: () -> Unit, onBackClick: () -> Unit) {
 
             Spacer(Modifier.height(8.dp))
 
-            Text(
+            Text( fontFamily = VariableFont,
                 text = "Saved to device and your library",
                 fontSize = 13.sp,
                 color = Color(0xFF939393),
@@ -165,7 +166,7 @@ fun ExportScreen(onDoneClick: () -> Unit, onBackClick: () -> Unit) {
 
                         Spacer(modifier = Modifier.width(8.dp))
 
-                        Text(
+                        Text( fontFamily = VariableFont,
                             text = "Share to Instagram Stories",
                             fontWeight = FontWeight.W700,
                             color = Color.White,
@@ -216,7 +217,7 @@ fun ExportScreen(onDoneClick: () -> Unit, onBackClick: () -> Unit) {
 
                         Spacer(modifier = Modifier.width(8.dp))
 
-                        Text(
+                        Text( fontFamily = VariableFont,
                             text = "Share to TikTok",
                             fontWeight = FontWeight.W700,
                             color = Color.White,
@@ -299,7 +300,7 @@ fun ExportScreen(onDoneClick: () -> Unit, onBackClick: () -> Unit) {
                     containerColor = Color(0xFF372955)
                 )
             ) {
-                Text(
+                Text( fontFamily = VariableFont,
                     text = "Done", color = Color.White, fontSize = 16.sp
                 )
             }
@@ -328,7 +329,7 @@ fun SocialIcon(name: String, iconId: Int, backgroundColor: Brush) {
 
         Spacer(modifier = Modifier.height(6.dp))
 
-        Text(
+        Text( fontFamily = VariableFont,
             text = name, color = Color(0xFF939393), fontSize = 11.sp
         )
     }

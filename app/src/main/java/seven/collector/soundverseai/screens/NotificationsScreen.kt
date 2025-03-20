@@ -37,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import seven.collector.soundverseai.R
+import seven.collector.soundverseai.utilities.VariableFont
 
 @Composable
 fun NotificationsScreen(
@@ -123,7 +124,7 @@ fun NotificationsScreen(
                     )
                 }
                 Spacer(modifier = Modifier.width(16.dp))
-                Text("Notifications", color = Color.White, fontSize = 18.sp)
+                Text( fontFamily = VariableFont, text = "Notifications", color = Color.White, fontSize = 18.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -166,20 +167,20 @@ fun NotificationCard(
             )
             Spacer(modifier = Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
-                Text(
+                Text( fontFamily = VariableFont,
                     text = notification.title,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
                 Spacer(modifier = Modifier.height(4.dp))
-                Text(
+                Text( fontFamily = VariableFont,
                     text = notification.message,
                     fontSize = 14.sp,
                     color = Color.White.copy(alpha = 0.8f)
                 )
                 Spacer(modifier = Modifier.height(4.dp))
-                Text(
+                Text( fontFamily = VariableFont,
                     text = notification.timestamp,
                     fontSize = 12.sp,
                     color = Color.Gray

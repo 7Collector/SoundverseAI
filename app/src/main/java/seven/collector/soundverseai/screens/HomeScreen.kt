@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import seven.collector.soundverseai.R
+import seven.collector.soundverseai.utilities.VariableFont
 import seven.collector.soundverseai.utilities.showNotification
 
 @Composable
@@ -73,7 +74,7 @@ fun HomeScreen(
                 modifier = Modifier.width(280.dp)
             ) {
                 Spacer(modifier = Modifier.height(16.dp))
-                Text(
+                Text( fontFamily = VariableFont,
                     text = "Soundverse AI",
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold,
@@ -81,15 +82,15 @@ fun HomeScreen(
                 )
                 Divider()
                 NavigationDrawerItem(
-                    label = { Text("Home") },
+                    label = { Text( fontFamily = VariableFont, text = "Home") },
                     selected = true,
                     onClick = { scope.launch { drawerState.close() } })
                 NavigationDrawerItem(
-                    label = { Text("Profile") },
+                    label = { Text( fontFamily = VariableFont, text = "Profile") },
                     selected = false,
                     onClick = { scope.launch { drawerState.close() } })
                 NavigationDrawerItem(
-                    label = { Text("Notification Test") },
+                    label = { Text( fontFamily = VariableFont, text = "Notification Test") },
                     selected = false,
                     onClick = {
                         scope.launch {
@@ -167,8 +168,8 @@ fun HomeScreen(
                         modifier = Modifier.size(120.dp)
                     )
                     Spacer(modifier = Modifier.height(12.dp))
-                    Text(
-                        "Welcome to Soundverse AI",
+                    Text( fontFamily = VariableFont,
+                        text = "Welcome to Soundverse AI",
                         fontSize = 26.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.White
@@ -192,8 +193,8 @@ fun HomeScreen(
                             )
                             .clickable { onStartClick() }
                     ) {
-                        Text(
-                            "Start Chat",
+                        Text( fontFamily = VariableFont,
+                            text = "Start Chat",
                             color = Color.White,
                             fontSize = 18.sp,
                             modifier = Modifier.padding(12.dp)
@@ -201,8 +202,8 @@ fun HomeScreen(
                     }
                 }
                 Spacer(modifier = Modifier.height(24.dp))
-                Text(
-                    "Previous Chats",
+                Text( fontFamily = VariableFont,
+                    text = "Previous Chats",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
@@ -219,7 +220,7 @@ fun HomeScreen(
                                 .padding(vertical = 4.dp)
                                 .clickable { onStartClick() }
                         ) {
-                            Text(
+                            Text( fontFamily = VariableFont,
                                 text = chat,
                                 fontSize = 18.sp,
                                 color = Color.White,
