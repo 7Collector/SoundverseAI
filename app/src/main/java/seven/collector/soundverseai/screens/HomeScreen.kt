@@ -3,7 +3,6 @@ package seven.collector.soundverseai.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,15 +16,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -46,7 +42,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -96,32 +91,32 @@ fun HomeScreen(
                 NavigationDrawerItem(
                     label = { Text("Notification Test") },
                     selected = false,
-                    onClick = { scope.launch {
-                        delay(10_000L)
-                        showNotification(context)
-                        drawerState.close() } })
+                    onClick = {
+                        scope.launch {
+                            delay(10_000L)
+                            showNotification(context)
+                            drawerState.close()
+                        }
+                    })
             }
         }
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color.Black)
                 .background(
                     brush = Brush.linearGradient(
-                        colors = listOf(Color(0xFF9164FF), Color.Black),
-                        start = Offset(0f, -LocalConfiguration.current.screenHeightDp * 0.4f),
-                        end = Offset(0f, LocalConfiguration.current.screenHeightDp * 0.4f)
+                        colors = listOf(
+                            Color(0xFF9164FF).copy(alpha = 0.48f),
+                            Color.Black.copy(alpha = 0.84f)
+                        ),
+                        start = Offset(0f, -LocalConfiguration.current.screenHeightDp * 0.3f),
+                        end = Offset(0f, LocalConfiguration.current.screenHeightDp * 0.5f)
                     )
                 )
                 .statusBarsPadding()
                 .navigationBarsPadding()
-                .pointerInput(Unit) {
-                    detectHorizontalDragGestures { _, dragAmount ->
-                        if (dragAmount > 50) {
-                            scope.launch { drawerState.open() }
-                        }
-                    }
-                }
         ) {
             Column(
                 modifier = Modifier
@@ -197,7 +192,12 @@ fun HomeScreen(
                             )
                             .clickable { onStartClick() }
                     ) {
-                        Text("Start Chat", color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(12.dp))
+                        Text(
+                            "Start Chat",
+                            color = Color.White,
+                            fontSize = 18.sp,
+                            modifier = Modifier.padding(12.dp)
+                        )
                     }
                 }
                 Spacer(modifier = Modifier.height(24.dp))

@@ -78,11 +78,15 @@ fun ChatScreen(onClick: () -> Unit) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color.Black)
                 .background(
                     brush = Brush.linearGradient(
-                        colors = listOf(Color(0xFF9164FF), Color.Black),
-                        start = Offset(0f, -LocalConfiguration.current.screenHeightDp * 0.4f),
-                        end = Offset(0f, LocalConfiguration.current.screenHeightDp * 0.4f)
+                        colors = listOf(
+                            Color(0xFF9164FF).copy(alpha = 0.48f),
+                            Color.Black.copy(alpha = 0.84f)
+                        ),
+                        start = Offset(0f, -LocalConfiguration.current.screenHeightDp * 0.3f),
+                        end = Offset(0f, LocalConfiguration.current.screenHeightDp * 0.5f)
                     )
                 )
         ) {
