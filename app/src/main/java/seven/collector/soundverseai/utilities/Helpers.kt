@@ -1,13 +1,23 @@
 package seven.collector.soundverseai.utilities
 
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Environment
 import android.util.Log
+import androidx.core.app.NotificationCompat
 import androidx.core.content.FileProvider
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import seven.collector.soundverseai.MainActivity
+import seven.collector.soundverseai.R
+import seven.collector.soundverseai.utilities.Constants.Companion.NOTIFICATION_TYPE
+import seven.collector.soundverseai.utilities.Constants.Companion.NOTIFICATION_TYPE_EXPORT
 import java.io.File
 import java.io.FileOutputStream
+import java.util.concurrent.TimeUnit
 
 fun shareVideoToInstagram(context: Context, assetFileName: String) {
     val instagramPackage = "com.instagram.android"
@@ -57,4 +67,32 @@ fun shareVideoToInstagram(context: Context, assetFileName: String) {
     } else {
         Log.e(tag, "Instagram does not support the story share intent.")
     }
+}
+
+fun showNotification(applicationContext: Context) {
+    val intent = Intent(applicationContext, MainActivity::class.java).apply {
+        putExtra(NOTIFICATION_TYPE, NOTIFICATION_TYPE_EXPORT)
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    }
+
+    val pendingIntent = PendingIntent.getActivity(
+        applicationContext,
+        0,
+        intent,
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+    )
+
+    val notificationManager =
+        applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+    val notification = NotificationCompat.Builder(applicationContext, "export_channel")
+        .setSmallIcon(R.drawable.logo_on_black)
+        .setContentTitle("New Export Ready")
+        .setContentText("Your audio export is ready to share")
+        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        .setAutoCancel(true)
+        .setContentIntent(pendingIntent)
+        .build()
+
+    notificationManager.notify(1, notification)
 }

@@ -48,19 +48,24 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import seven.collector.soundverseai.R
+import seven.collector.soundverseai.utilities.showNotification
 
 @Composable
 fun HomeScreen(
     onNotificationClick: () -> Unit,
     onStartClick: () -> Unit,
 ) {
+
+    val context = LocalContext.current.applicationContext
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val chats = listOf("Chat 1", "Chat 2")
@@ -89,15 +94,12 @@ fun HomeScreen(
                     selected = false,
                     onClick = { scope.launch { drawerState.close() } })
                 NavigationDrawerItem(
-                    label = { Text("Settings") },
+                    label = { Text("Notification Test") },
                     selected = false,
-                    onClick = { scope.launch { drawerState.close() } })
-                Spacer(modifier = Modifier.weight(1f))
-                Text(
-                    "Version 1.0.0",
-                    modifier = Modifier.padding(16.dp),
-                    style = MaterialTheme.typography.bodySmall
-                )
+                    onClick = { scope.launch {
+                        delay(10_000L)
+                        showNotification(context)
+                        drawerState.close() } })
             }
         }
     ) {
@@ -215,6 +217,7 @@ fun HomeScreen(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(vertical = 4.dp)
+                                .clickable { onStartClick() }
                         ) {
                             Text(
                                 text = chat,

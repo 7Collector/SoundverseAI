@@ -130,7 +130,7 @@ fun ExportScreen(onDoneClick: () -> Unit, onBackClick: () -> Unit) {
                     )
             ) {
                 Button(
-                    onClick = {shareVideoToInstagram(context, "sample.mp4")},
+                    onClick = { shareVideoToInstagram(context, "sample.mp4") },
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), // Transparent background
                     contentPadding = PaddingValues(0.dp),
                     modifier = Modifier
